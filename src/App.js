@@ -1,9 +1,30 @@
 import React ,{useState}from 'react';
 import {BottomNavigation, BottomNavigationAction } from "@material-ui/core"
 import {createMuiTheme,ThemeProvider} from "@material-ui/core/styles"
-import Homebd from "./Core/screens/homeBd";
 import Sidebar from "./Core/components/sidebar";
+import TopNav from "./Core/components/topNav"
 import FindscreenRes from "./Core/components/findScreenRes"
+import {  AnimatedSwitch } from 'react-router-transition';
+import {MakebodyWithRoutes} from './Core/codes/action'
+import Homebd from "./Core/screens/homeBd";
+import About from "./Core/screens/about";
+function mapStyles(styles) {
+  return {
+    opacity: styles.opacity,
+    transform: `scale(${styles.scale})`,
+  };
+}
+const bounceTransition = {
+  atEnter: {
+    opacity: -2,
+  },
+  atLeave: {
+    opacity: 1,
+  },
+  atActive: {
+    opacity: 1,
+  },
+};
 const textInpute =createMuiTheme({
   direction:'rtl',
   spacing:4,
@@ -24,39 +45,47 @@ const textInpute =createMuiTheme({
   },
 });
 function App() {
-  const [Bottomnav, bottset] =useState(0);
+  
   const [ screenReso,setReso ]=useState((window.innerWidth>480 && window.innerHeight>320 ? 
             
     true:
     false      
 ))
+const routes=[
+  {
+    path:"/",
+    render:<Homebd screenReso={screenReso} setReso={setReso}/>
+  },
+  {
+    path:"/Home",
+    render: <Homebd screenReso={screenReso} setReso={setReso}/>   
+    
+  },{
+    path:"/About",
+    render:<About screenReso={screenReso} setReso={setReso}/>
+  },{
+    path:"/Blog",
+    render:<Homebd screenReso={screenReso} setReso={setReso}/>
+  },]
   return (
     
     <div>
       <FindscreenRes setReso={setReso}/>
       <ThemeProvider theme={textInpute}>
-        <div style={{overflow:"auto"}}>
+        <div style={{overflowY:"auto"}}>
           <center>
-        <BottomNavigation
-        onChange={(e, value) => bottset(value)}
-        showLabels
-        value={Bottomnav}
-        style={{borderBottom:"2px solid rgba(0,0,0,.5)",marginBottom:"2px"}}
-        >
-          <BottomNavigationAction label="home"/>
-        <BottomNavigationAction label="blogs"/>
-        <BottomNavigationAction label="about"/>
-        <BottomNavigationAction label="home"/>
-        <BottomNavigationAction label="blogs"/>
-        <BottomNavigationAction label="about"/>
-        
-      </BottomNavigation>
+            <TopNav/>
       </center>
         </div>
-      
-      
+      <div>
       <Sidebar screenReso={screenReso} setReso={setReso}/>
-      <Homebd screenReso={screenReso} setReso={setReso}/>
+
+      <MakebodyWithRoutes route={routes} />
+        
+        
+        
+      </div>
+
 
       
       </ThemeProvider>
