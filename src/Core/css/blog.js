@@ -62,6 +62,7 @@ export const blogbdscrollMob={
 }
 export const blogbdDesk = {
     top:0,
+    alignSelf:"center",
     paddingTop:"2vh",
     paddingBottom:"2vh",
     width: "65vw",
