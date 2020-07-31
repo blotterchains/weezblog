@@ -1,19 +1,17 @@
-import {useEffect} from "react";
-export default function FindscreenRes(setReso){
+import { useEffect } from "react";
+import { useStateValue } from './stateManage';
+export default function FindscreenRes() {
+    const [{ screenReso }, dispatch] = useStateValue();
     useEffect(
-        ()=>{
-            const handleResize=()=> {
-                console.log("resize")
-                setReso.setReso((window.innerWidth>480 ? 
-            
-                    true:false
-                            
-            ))}
-              
-                    
+        () => {
+            const handleResize = () => {
+                dispatch({type:(window.innerWidth > 480 ?
+                    true : 'mob'
+                )})
+            }
             window.addEventListener('resize', handleResize)
         }
     )
-        return ""
-    
+    return ""
+
 }

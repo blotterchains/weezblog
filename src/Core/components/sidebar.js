@@ -1,19 +1,14 @@
-import React ,{useState,useEffect} from 'react';
-import {Box,Button} from "@material-ui/core"
-import {sidebar,whiteSection} from "../css/blog" 
-export default function Sidebar (props){
-        return(
-        <div style={props.screenReso ? {float:"left",}:{display:"none"}}>
-        <Box boxShadow={7} style={whiteSection}>
-        <Button  variant="contained" color="primary">
-              sections
-          </Button>
-          
+import React from 'react';
+import { Box, Button } from "@material-ui/core"
+import { whiteSection, sidebar } from "../css/blog"
+export default function Sidebar(props) {
+  return (
+     <Box boxShadow={3} style={sidebar}>
+                        <h1>
+                            conist
+                        </h1>
+                    </Box>
+  )
 
-          </Box>
-          
-      </div>
-        )
-    
 }
 
