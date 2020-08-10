@@ -76,17 +76,16 @@ function App() {
         <div>
           <StateProvider reducer={reducer} initialState={initialState}>
             <FindscreenRes/>
-            <Grid spacing={3} container>
-              <Grid item>
-                <Sidebar/>
+            <center>
+              <Grid container>
+                <Grid item>
+                  <NumContext.Provider value={[ZZ,setZZ]}>
+                      <MakebodyWithRoutes route={routes} />
+                  </NumContext.Provider>
+                </Grid>
+                
               </Grid>
-              <Grid item>
-                <NumContext.Provider value={[ZZ,setZZ]}>
-                    <MakebodyWithRoutes route={routes} />
-                </NumContext.Provider>
-              </Grid>
-              
-            </Grid>
+            </center>
           </StateProvider>
         </div>
       </ThemeProvider>
