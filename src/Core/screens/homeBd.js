@@ -1,40 +1,63 @@
 import React, { Component, } from 'react';
-import { Box, Grid, Button } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import Sidebar from "../components/sidebar";
-import { whiteSection, blogbdDesk, blogbdDeskAnim, blogbdscrollDesk, blogbdMob, blogbdscrollMob, sidebar } from "../css/blog"
+import { whiteSection, greenSection , blogbdDesk, blogbdDeskAnim, blogbdscrollDesk, blogbdMob, blogbdscrollMob, sidebar } from "../css/blog"
 import { useStateValue } from '../components/stateManage';
 import {css } from 'aphrodite';
-import {NumContext} from '../components/stateManage'
+import {NumContext} from '../components/stateManage';
+import Carousel from 'react-material-ui-carousel';
+import '../css/blog.css'
+const image=[
+    {
+        h1:'اولین اسلاید',
+        imglnk:'https://lh3.googleusercontent.com/proxy/-xLxyeDhZVLD6Tl161laQiHH80Ikevlo4McV4NUA8f2hRdq1C0gIJhjpbYECb6LfCdWYvFRQlk2Dm5Bd-ZdsEfQUpmVXE8_9-NOdR-Wng2I4IU2uXVwSWNNg02-hHSbN1PyH90jq13WU_YNkyb9hcCB7N1R8iHmLQS9xYgW9CUJSihVB4fuEAMOxeW-Hk2rLQZPCqo9pzh2tv0duYB-ZMCvH4YM5Los'
+    },
+    {
+        h1:"دومین اسلاید",
+        imglnk:"https://i.redd.it/djnlea7fpf301.jpg"
+    }]
+const slideShowRender=(imglnk,h1)=>{
+    return(
+        <Box className={css(blogbdDeskAnim.bounce)} boxShadow={7} style={whiteSection}>
+                                    <img style={{
+                                        width:'100%',
+                                        height:'50vh',
+                                        borderRadius:10,
+                                        }} src={imglnk}
+                                        />
 
+                                            <div style={{
+                                            position:'absolute',
+                                            bottom:'5vh',
+                                            left:'3vw',
+                                            width:'90vw',
+                                            borderRadius:50,
+                                            "background":"linear-gradient(to bottom,  rgba(214,214,214,0.1) 0%,rgba(0,0,0,0.5) 78%,rgba(0,0,0,0.6) 90%)",
+                                            "filter":"progid:DXImageTransform.Microsoft.gradient( startColorstr='#82d6d6d6', endColorstr='#c4000000',GradientType=0 )"
+                                            }}>
+                                                <center>
+                                                    <h1 style={{color:'white'}}>{h1}</h1>
+                                                </center>
+                                            </div>
+
+                                </Box>
+    )
+}
 export default function Homebd(props) {
     const [{ screenReso }, dispatch] = useStateValue();
    return (
+       
         
                 <div style={screenReso ? blogbdscrollDesk : blogbdscrollMob}>
+                    
                     <div >
-                    <NumContext.Consumer >
-{(theme)=><Button onClick={()=>theme[1](theme[0]+1)}>{theme[0]}</Button>}
-            </NumContext.Consumer>
+
                         <Box boxShadow={3} style={screenReso ? blogbdDesk : blogbdMob}>
-                            <Box className={css(blogbdDeskAnim.bounce)} boxShadow={7} style={whiteSection}>
-                                Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin, these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are digraphs not to be found in the original.
-            
-                In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely since the sixteenth century.
-                Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin, these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are digraphs not to be found in the original.
-            
-                In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely since the sixteenth century.
-                Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin, these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are digraphs not to be found in the original.
-                            </Box>
-                            <br />
-                            <Box className={css(blogbdDeskAnim.bounce)} boxShadow={22} style={whiteSection}>
-                                Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin, these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are digraphs not to be found in the original.
-            
-                In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely since the sixteenth century.
-                Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin, these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are digraphs not to be found in the original.
-            
-                In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely since the sixteenth century.
-                Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it's not genuine, correct, or comprehensible Latin anymore. While lorem ipsum's still resembles classical Latin, it actually has no meaning whatsoever. As Cicero's text doesn't contain the letters K, W, or Z, alien to latin, these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are digraphs not to be found in the original.
-                            </Box>
+                            <Carousel navButtonsAlwaysVisible={true}>
+                                {image.map((data)=>slideShowRender(data.imglnk,data.h1))}
+                            </Carousel>
+                            <img class='btn-social' src={image[0].imglnk}/>
+                            
                         </Box>
                     </div>
                     </div>
