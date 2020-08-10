@@ -1,0 +1,10 @@
+.btn-social {
+    width: 100px;
+    position: relative;
+    transition: 1s ease;
+    cursor: pointer;
+}
+
+.btn-social:hover {
+    transform: rotate(8deg) scale(1.5,1.5);
+}
